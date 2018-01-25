@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BumpFeedbackManager : MonoBehaviour {
+public class BumpFeedbackManager : MonoBehaviour
+{
+    public Transform pointOfContact;
+    public GameObject testBump;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnCollisionEnter(Collision collision)
+    {
+        pointOfContact = collision.transform;
+        Debug.Log("Player hit something in these xyz coordinates" + pointOfContact);
+        GameObject.Instantiate(testBump, pointOfContact.transform.position,pointOfContact.rotation);
+    }
 }
