@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxVelocity;
 
     [Header("")]
+    public bool movingRestricted;
     public bool jumpingAllowed;
     public KeyCode jumpKey;
     public LayerMask groundLayerMask;
@@ -51,17 +52,19 @@ public class PlayerMovement : MonoBehaviour
             }
             else { Debug.Log("Debug : Jumping is disabled, please enable it on the inspector."); }
         }
-
-        if (firstPersonController == false)
+        if (movingRestricted == false)
         {
-            if (xAxis != 0)
+            if (firstPersonController == false)
             {
-                PlayerMove(xAxis, 0, firstPersonController);
+                if (xAxis != 0)
+                {
+                    PlayerMove(xAxis, 0, firstPersonController);
+                }
             }
-        }
-        else if (xAxis != 0 || zAxis != 0)
-        {
-            PlayerMove(xAxis, zAxis, firstPersonController);
+            else if (xAxis != 0 || zAxis != 0)
+            {
+                PlayerMove(xAxis, zAxis, firstPersonController);
+            }
         }
     }
 

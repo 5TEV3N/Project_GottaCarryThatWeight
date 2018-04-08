@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -246,6 +247,7 @@ MonoBehaviour:
   indirectMixLevel: 1.6
   simulationType: 0
   uniqueIdentifier: 
+  avoidSilenceDuringInit: 0
   bakingRadius: 16
   useAllProbeBoxes: 0
   probeBoxes: []
@@ -254,6 +256,9 @@ MonoBehaviour:
   bakedDataSize: 0
   bakedStatsFoldout: 0
   bakeToggle: 0
+  bakedDataIdentifier:
+    identifier: 0
+    type: 0
 --- !u!1 &229801890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1196,7 @@ MonoBehaviour:
   playerSpeed: 1
   currentVelocity: 0
   maxVelocity: 1
+  movingRestricted: 0
   jumpingAllowed: 0
   jumpKey: 0
   groundLayerMask:
@@ -1436,9 +1442,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1496497440
@@ -1560,23 +1566,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioEngine: 0
-  materialPreset: 0
+  materialPreset: 10
   materialValue:
-    LowFreqAbsorption: 0.1
+    LowFreqAbsorption: 0.13
     MidFreqAbsorption: 0.2
-    HighFreqAbsorption: 0.3
+    HighFreqAbsorption: 0.24
     Scattering: 0.05
-    LowFreqTransmission: 0.1
-    MidFreqTransmission: 0.05
-    HighFreqTransmission: 0.03
-  simulationPreset: 0
+    LowFreqTransmission: 0.015
+    MidFreqTransmission: 0.002
+    HighFreqTransmission: 0.001
+  simulationPreset: 2
   simulationValue:
-    RealtimeRays: 4096
+    RealtimeRays: 16384
     RealtimeSecondaryRays: 1024
-    RealtimeBounces: 2
-    BakeRays: 16384
+    RealtimeBounces: 8
+    BakeRays: 65536
     BakeSecondaryRays: 4096
-    BakeBounces: 32
+    BakeBounces: 128
     Duration: 1
     AmbisonicsOrder: 1
     MaxSources: 32
@@ -1746,6 +1752,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
